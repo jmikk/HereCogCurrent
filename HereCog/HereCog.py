@@ -273,7 +273,7 @@ You can apply to join the North Pacific Army military force of the North Pacific
     @commands.has_role('NPA Officer')
     async def clear(self,ctx):
         """Run this before addding targets to clear everything"""
-        MyCog2.targets=[]
+        HereCog.targets=[]
         with open("/home/pi/mycogs/HereCog/targets", 'w') as f:
              f.write("")
         with open("/home/pi/mycogs/HereCog/hits","w") as f:
@@ -285,7 +285,7 @@ You can apply to join the North Pacific Army military force of the North Pacific
         """Next target asumming a miss.  Use Hit/Miss for auto reports"""
         if ctx.invoked_with == 'H' or ctx.invoked_with == 'Hit' or ctx.invoked_with == 'h' or ctx.invoked_with == 'hit':
             with open("/home/pi/mycogs/HereCog/hits","a+") as fhit:
-                fhit.write(MyCog2.lasttarg+"\n")
+                fhit.write(HereCog.lasttarg+"\n")
         targets=[]
         with open("/home/pi/mycogs/HereCog/targets", 'r+') as f:
             lines = f.readline()
@@ -295,11 +295,11 @@ You can apply to join the North Pacific Army military force of the North Pacific
                     if len(str(targets[0])) < 1:
                        raise Exception(" ")
                     await ctx.send("Next target is: "+ str(targets[0]))
-                    MyCog2.lasttarg=str(targets[0])
+                    HereCog.lasttarg=str(targets[0])
                     del targets[0]
                 except Exception:
                     await ctx.send("Thanks for coming out, this op is now over! Pleae do end_update or end_joint_update")
-                    MyCog2.lasttarg=""
+                    HereCog.lasttarg=""
             else:
                 await ctx.send("No targets try using ~add")
                 return
