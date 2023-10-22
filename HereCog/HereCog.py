@@ -170,6 +170,7 @@ You can apply to join the North Pacific Army military force of the North Pacific
                outbutt= outbutt+grunt+"\n"
             for each in HereCog.hits:
                 outbutt=outbutt+each
+            await ctx.send(HereCog.hits)
             HereCog.hits=[]
         await channel_out.send(outbutt)
         await ctx.send("The end of the end")
