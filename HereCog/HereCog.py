@@ -183,7 +183,7 @@ You can apply to join the North Pacific Army military force of the North Pacific
         #This also does stuff like remove roles and lists who had them
         target=[]
         tarcount=0
-        list=discord.utils.get(ctx.guild.roles, name='blazing_joints')
+        list=discord.utils.get(ctx.guild.roles, name='Blazing Joints')
         #CHANGE TO REPORTS CHANNEL ******************************************************
         given_name="npa-reports"
         channel = discord.utils.get(ctx.guild.channels, name=given_name)
@@ -223,7 +223,7 @@ You can apply to join the North Pacific Army military force of the North Pacific
         else:
              await channel_out.send("Now presenting the most honorable "+ ctx.author.mention)
 
-    @commands.has_role('Joint Ops')
+    @commands.has_role('Blazing Joints')
     @commands.command(pass_context=True)
     async def bye(self, ctx):
         """Leaves the op channel"""
