@@ -258,6 +258,7 @@ You can apply to join the North Pacific Army military force of the North Pacific
         """Run this before addding targets to clear everything"""
         HereCog.targets=[]
         HereCog.hits=[]
+        HereCog.lasttarg=[]
         await ctx.send("Cleared the current list")
 
     @commands.command(pass_context=True,aliases=['H','Hit','h','hit','M','m','Miss','miss','t','T'])
