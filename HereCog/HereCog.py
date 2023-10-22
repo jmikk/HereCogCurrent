@@ -161,16 +161,15 @@ You can apply to join the North Pacific Army military force of the North Pacific
         channel_out = ctx.guild.get_channel(channel_id)
         #CHANGE THE ABOVE TO REPORTS CHANNEL ********************************************
         memberlist=[]
+        outbutt="The following members partook: \n"
         for person in ctx.guild.members:
-            outbutt="The following members partook: \n"
             if list in person.roles:
                await person.remove_roles(list)
                memberlist.append(f"{person.mention}")
-            for grunt in memberlist:
-               outbutt= outbutt+grunt+"\n"
-            for each in HereCog.hits:
-                outbutt=outbutt+each
-            await ctx.send(HereCog.hits)
+        for grunt in memberlist:
+            outbutt= outbutt+grunt+"\n"
+        for each in HereCog.hits:
+            outbutt=outbutt+each
             HereCog.hits=[]
         await channel_out.send(outbutt)
         await ctx.send("The end of the end")
