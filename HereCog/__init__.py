@@ -1,5 +1,5 @@
-from .HOTW import HOTW
+from .HereCogz import HereCogz
 
 
 async def setup(bot):
-    await bot.add_cog(HOTW(bot))
+    await bot.add_cog(HereCogz(bot))
