@@ -26,7 +26,7 @@ Nine thousand "Absolute Fucking Godgamer" three"""
 lasttarg="\n"
 target=[]
 
-class MyCog2(commands.Cog):
+class HereCog(commands.Cog):
     Jointlist=[]
     reglist=[]
     lasttarg="\n"
