@@ -228,7 +228,7 @@ You can apply to join the North Pacific Army military force of the North Pacific
     async def bye(self, ctx):
         """Leaves the op channel"""
         member = ctx.author
-        var = discord.utils.get(ctx.guild.roles, name = "Joint Ops")
+        var = discord.utils.get(ctx.guild.roles, name = "Blazing Joints")
         member = ctx.message.author # Member object that you want to add the role to
         await member.remove_roles(var)
         await ctx.send("Bye!")
