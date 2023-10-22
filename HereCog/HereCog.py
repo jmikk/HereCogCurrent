@@ -266,6 +266,8 @@ You can apply to join the North Pacific Army military force of the North Pacific
         #await ctx.send(HereCog.targets)
         if ctx.invoked_with == 'H' or ctx.invoked_with == 'Hit' or ctx.invoked_with == 'h' or ctx.invoked_with == 'hit':
             HereCog.hits.append(HereCog.lasttarg)
+            await ctx.send("Hit!")
+            await ctx.send(HereCog.hits)
         if HereCog.targets:
             try:
                 if len(str(HereCog.targets[0])) < 1:
