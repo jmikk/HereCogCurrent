@@ -267,6 +267,8 @@ You can apply to join the North Pacific Army military force of the North Pacific
         if HereCog.targets:
             try:
                 if len(str(HereCog.targets[0])) < 1:
+                    await ctx.send("Short")
+                    await ctx.send(HereCog.targets)
                     raise Exception(" ")
                 await ctx.send("Next target is: "+ str(targets[0]))
                 HereCog.lasttarg=str(HereCog.targets[0])
