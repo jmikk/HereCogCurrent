@@ -84,10 +84,6 @@ class HereCog(commands.Cog):
         await channel.send(f"{ctx.author.mention} Daily Pile")
 
 
-
-
-
-
     @commands.command()
     async def mission(self,ctx):
         await ctx.send("https://docs.google.com/spreadsheets/d/12l7zoYXrV7L_5uXM5HeVoe93ZBU70ypYf3jS1I0TZuE/edit#gid=577970735")
@@ -250,7 +246,6 @@ You can apply to join the North Pacific Army military force of the North Pacific
     @commands.has_role('NPA Officer')
     async def add(self,ctx,*args):
         """Adds a list of targets use " " to surround each target"""
-        HereCog.targets=[]
         #adds targets to the list
         for every in args:
              HereCog.targets.append(every)
