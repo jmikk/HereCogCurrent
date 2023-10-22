@@ -192,17 +192,16 @@ You can apply to join the North Pacific Army military force of the North Pacific
         #CHANGE THE ABOVE TO REPORTS CHANNEL ********************************************
         memberlist=[]
         for person in ctx.guild.members:
-            outbutt="The following members partook: \n"
             if list in person.roles:
                await person.remove_roles(list)
                memberlist.append(f"{person.mention}")
-            for grunt in memberlist:
-               outbutt= outbutt+grunt+"\n"
-            for each in HereCog.hits:
-                outbutt=outbutt+each+"\n"
+        for grunt in memberlist:
+            outbutt= outbutt+grunt+"\n"
+        for each in HereCog.hits:
+            outbutt=outbutt+each+"\n"
             HereCog.hits=[]
-            await channel_out.send(outbutt)
-        await ctx.send("That was a nice joint.  Cya all later")
+        await channel_out.send(outbutt)
+        await ctx.send("The end of the end")
 
     @commands.command(pass_context=True,aliases=["joint_join","join_joint"])
     async def joint_here(self, ctx):
