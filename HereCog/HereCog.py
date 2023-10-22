@@ -94,7 +94,7 @@ class HereCog(commands.Cog):
 
     @commands.has_role('High Command')
     @commands.command(aliases=['Broadcast'])
-    async def 1broadcast(self,ctx,*,args):
+    async def broadcast1(self,ctx,*,args):
         output = args
         output = output + "\n This is an automated messsage sent by "+ctx.author.mention+" please respond to them!"
         role=discord.utils.get(ctx.guild.roles, name="NPA Soldier")
