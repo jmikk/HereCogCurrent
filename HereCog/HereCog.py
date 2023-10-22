@@ -23,7 +23,6 @@ Ex-General of Mordor, Overall NPA Legend, Fastest Trader in the Midwest, (1x) SC
 He Who Bested so many other traders using TCALS, Supreme Owner of many card farms and cards,
 Anti-Fascist King, NSTC Prize distributor, Big Farma founder, he who nuked Noahs Almighty Second Country,
 Nine thousand "Absolute Fucking Godgamer" three"""
-lasttarg="\n"
 target=[]
 
 class HereCog(commands.Cog):
@@ -34,6 +33,8 @@ class HereCog(commands.Cog):
     RegionalNation=""
     hits=[]
     targets=[]
+    lasttarg="\n"
+
 
     def __init__(self, bot):
         self.bot = bot
@@ -264,7 +265,7 @@ You can apply to join the North Pacific Army military force of the North Pacific
         """Next target asumming a miss.  Use Hit/Miss for auto reports"""
         #await ctx.send(HereCog.targets)
         if ctx.invoked_with == 'H' or ctx.invoked_with == 'Hit' or ctx.invoked_with == 'h' or ctx.invoked_with == 'hit':
-            HereCog.hits.append(lasttarg)
+            HereCog.hits.append(HereCog.lasttarg)
         if HereCog.targets:
             try:
                 if len(str(HereCog.targets[0])) < 1:
