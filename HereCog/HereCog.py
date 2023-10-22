@@ -170,7 +170,7 @@ You can apply to join the North Pacific Army military force of the North Pacific
         for grunt in memberlist:
             outbutt= outbutt+grunt+"\n"
         for each in HereCog.hits:
-            outbutt=outbutt+each
+            outbutt=outbutt+each+"\n"
             HereCog.hits=[]
         await channel_out.send(outbutt)
         await ctx.send("The end of the end")
@@ -199,7 +199,7 @@ You can apply to join the North Pacific Army military force of the North Pacific
             for grunt in memberlist:
                outbutt= outbutt+grunt+"\n"
             for each in HereCog.hits:
-                outbutt=outbutt+each
+                outbutt=outbutt+each+"\n"
             HereCog.hits=[]
             await channel_out.send(outbutt)
         await ctx.send("That was a nice joint.  Cya all later")
