@@ -276,7 +276,7 @@ You can apply to join the North Pacific Army military force of the North Pacific
                 await ctx.send("Thanks for coming out, this op is now over! Pleae do end_update or end_joint_update")
                 HereCog.lasttarg=""
         else:
-            await ctx.send("No targets try using ~add")
+            await ctx.send("No targets left please add more with add or type end_update/end_joint_update to close out.")
             return
 
     def api_request(self,data, header):
