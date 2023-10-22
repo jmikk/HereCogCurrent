@@ -262,13 +262,12 @@ You can apply to join the North Pacific Army military force of the North Pacific
     @commands.command(pass_context=True,aliases=['H','Hit','h','hit','M','m','Miss','miss','t','T'])
     async def next(self,ctx):
         """Next target asumming a miss.  Use Hit/Miss for auto reports"""
+        await ctx.send(HereCog.targets)
         if ctx.invoked_with == 'H' or ctx.invoked_with == 'Hit' or ctx.invoked_with == 'h' or ctx.invoked_with == 'hit':
             HereCog.hits.append(lasttarg)
         if HereCog.targets:
             try:
                 if len(str(HereCog.targets[0])) < 1:
-                    await ctx.send("Short")
-                    await ctx.send(HereCog.targets)
                     raise Exception(" ")
                 await ctx.send("Next target is: "+ str(targets[0]))
                 HereCog.lasttarg=str(HereCog.targets[0])
