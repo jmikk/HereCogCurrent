@@ -32,6 +32,8 @@ class HereCog(commands.Cog):
     lasttarg="\n"
     password=""
     RegionalNation=""
+    hits=[]
+    targets=[]
 
     def __init__(self, bot):
         self.bot = bot
@@ -108,14 +110,6 @@ class HereCog(commands.Cog):
         await ctx.send("Done you should have gotten it by now")
 
 
-    @commands.Cog.listener()
-    async def on_message(message):
-        if isinstance(message.channel, discord.DMChannel):
-            emb=discord.Embed(title=message.author, description=message.content)
-            channel = client.get_channel(183523616242008064)
-            await channel.send(embed=emb)
-
-
     @commands.command(pass_context=True,aliases=['NPA'])
     async def npa(self, ctx):
         await ctx.send("""
@@ -178,11 +172,9 @@ You can apply to join the North Pacific Army military force of the North Pacific
                memberlist.append(f"{person.mention}")
             for grunt in memberlist:
                outbutt= outbutt+grunt+"\n"
-        with open("/home/pi/mycogs/HereCog/hits","r+") as ff:
-            fflist=ff.readlines()
-            for each in fflist:
+            for each in HereCog.hits:
                 outbutt=outbutt+each
-        open("/home/pi/mycogs/HereCog/hits", mode='w').close()
+            HereCog.hits=[]
         await channel_out.send(outbutt)
         await ctx.send("The end of the end")
 
@@ -209,12 +201,10 @@ You can apply to join the North Pacific Army military force of the North Pacific
                memberlist.append(f"{person.mention}")
             for grunt in memberlist:
                outbutt= outbutt+grunt+"\n"
-        with open("/home/pi/mycogs/HereCog/hits","r+") as ff:
-            fflist=ff.readlines()
-            for each in fflist:
+            for each in HereCog.hits:
                 outbutt=outbutt+each
-        open("/home/pi/mycogs/HereCog/hits", mode='w').close()
-        await channel_out.send(outbutt)
+            HereCog.hits=[]
+            await channel_out.send(outbutt)
         await ctx.send("That was a nice joint.  Cya all later")
 
     @commands.command(pass_context=True,aliases=["joint_join","join_joint"])
@@ -259,14 +249,11 @@ You can apply to join the North Pacific Army military force of the North Pacific
     @commands.command(pass_context=True)
     @commands.has_role('NPA Officer')
     async def add(self,ctx,*args):
-        targets=[]
         """Adds a list of targets use " " to surround each target"""
+        HereCog.targets=[]
         #adds targets to the list
         for every in args:
              targets.append(every)
-        with open("/home/pi/mycogs/HereCog/targets", "a") as f:
-             for each in targets:
-                 f.write(each+",")
         await ctx.send('{} targets added'.format(len(args)))
 
     @commands.command(pass_context=True)
@@ -274,38 +261,27 @@ You can apply to join the North Pacific Army military force of the North Pacific
     async def clear(self,ctx):
         """Run this before addding targets to clear everything"""
         HereCog.targets=[]
-        with open("/home/pi/mycogs/HereCog/targets", 'w') as f:
-             f.write("")
-        with open("/home/pi/mycogs/HereCog/hits","w") as f:
-             f.write("")
+        HereCog.hits=[]
         await ctx.send("Cleared the current list")
 
     @commands.command(pass_context=True,aliases=['H','Hit','h','hit','M','m','Miss','miss','t','T'])
     async def next(self,ctx):
         """Next target asumming a miss.  Use Hit/Miss for auto reports"""
         if ctx.invoked_with == 'H' or ctx.invoked_with == 'Hit' or ctx.invoked_with == 'h' or ctx.invoked_with == 'hit':
-            with open("/home/pi/mycogs/HereCog/hits","a+") as fhit:
-                fhit.write(HereCog.lasttarg+"\n")
-        targets=[]
-        with open("/home/pi/mycogs/HereCog/targets", 'r+') as f:
-            lines = f.readline()
-            if lines:
-                targets = lines.replace("\0","").replace("^@","").split(",")
+                HereCog.hits.append(lasttarg)
+            if HereCog.targets:
                 try:
-                    if len(str(targets[0])) < 1:
+                    if len(str(HereCog.targets[0])) < 1:
                        raise Exception(" ")
                     await ctx.send("Next target is: "+ str(targets[0]))
-                    HereCog.lasttarg=str(targets[0])
-                    del targets[0]
+                    HereCog.lasttarg=str(HereCog.targets[0])
+                    del HereCog.targets[0]
                 except Exception:
                     await ctx.send("Thanks for coming out, this op is now over! Pleae do end_update or end_joint_update")
                     HereCog.lasttarg=""
             else:
                 await ctx.send("No targets try using ~add")
                 return
-        with open("/home/pi/mycogs/HereCog/targets","w") as f:
-                for each in targets:
-                    f.write(each+",")
 
     def api_request(self,data, header):
         url = "https://www.nationstates.net/cgi-bin/api.cgi"
