@@ -268,20 +268,20 @@ You can apply to join the North Pacific Army military force of the North Pacific
     async def next(self,ctx):
         """Next target asumming a miss.  Use Hit/Miss for auto reports"""
         if ctx.invoked_with == 'H' or ctx.invoked_with == 'Hit' or ctx.invoked_with == 'h' or ctx.invoked_with == 'hit':
-                HereCog.hits.append(lasttarg)
-            if HereCog.targets:
-                try:
-                    if len(str(HereCog.targets[0])) < 1:
-                       raise Exception(" ")
-                    await ctx.send("Next target is: "+ str(targets[0]))
-                    HereCog.lasttarg=str(HereCog.targets[0])
-                    del HereCog.targets[0]
-                except Exception:
-                    await ctx.send("Thanks for coming out, this op is now over! Pleae do end_update or end_joint_update")
-                    HereCog.lasttarg=""
-            else:
-                await ctx.send("No targets try using ~add")
-                return
+            HereCog.hits.append(lasttarg)
+        if HereCog.targets:
+            try:
+                if len(str(HereCog.targets[0])) < 1:
+                    raise Exception(" ")
+                await ctx.send("Next target is: "+ str(targets[0]))
+                HereCog.lasttarg=str(HereCog.targets[0])
+                del HereCog.targets[0]
+            except Exception:
+                await ctx.send("Thanks for coming out, this op is now over! Pleae do end_update or end_joint_update")
+                HereCog.lasttarg=""
+        else:
+            await ctx.send("No targets try using ~add")
+            return
 
     def api_request(self,data, header):
         url = "https://www.nationstates.net/cgi-bin/api.cgi"
