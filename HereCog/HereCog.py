@@ -178,8 +178,8 @@ You can apply to join the North Pacific Army military force of the North Pacific
     @commands.has_role('NPA Officer')
     @commands.command(pass_context=True)
     async def end_joint_update(self, ctx):
-        """Ends a joint update with a report"""
-        await ctx.send("The start of the end of the joint oh no!")
+        """Ends a regular update with report"""
+        await ctx.send("The start of the end")
         #This also does stuff like remove roles and lists who had them
         target=[]
         tarcount=0
@@ -191,6 +191,7 @@ You can apply to join the North Pacific Army military force of the North Pacific
         channel_out = ctx.guild.get_channel(channel_id)
         #CHANGE THE ABOVE TO REPORTS CHANNEL ********************************************
         memberlist=[]
+        outbutt="The following members partook: \n"
         for person in ctx.guild.members:
             if list in person.roles:
                await person.remove_roles(list)
