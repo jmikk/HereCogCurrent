@@ -253,7 +253,7 @@ You can apply to join the North Pacific Army military force of the North Pacific
         HereCog.targets=[]
         #adds targets to the list
         for every in args:
-             targets.append(every)
+             HereCog.targets.append(every)
         await ctx.send('{} targets added'.format(len(args)))
 
     @commands.command(pass_context=True)
