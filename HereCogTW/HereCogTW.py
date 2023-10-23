@@ -84,6 +84,7 @@ class HereCogTW(commands.Cog):
         await channel.send(f"{ctx.author.mention} Daily Pile")
 
     @commands.has_role('Order Leadership')
+    @commands.command()
     async def broadcast1(self,ctx,*,args):
         await ctx.send("Sending now")
         output = args
