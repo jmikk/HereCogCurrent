@@ -25,7 +25,7 @@ Anti-Fascist King, NSTC Prize distributor, Big Farma founder, he who nuked Noahs
 Nine thousand "Absolute Fucking Godgamer" three"""
 target=[]
 
-class HereCog(commands.Cog):
+class HereCogTW(commands.Cog):
     Jointlist=[]
     reglist=[]
     lasttarg="\n"
@@ -42,16 +42,15 @@ class HereCog(commands.Cog):
         self.bot.tarcount=int(0)
         self.password=""
         self.RegionalNation=""
-
+    
     @commands.Cog.listener()
     async def on_member_join(self,member):
         channel = member.guild.system_channel
         if channel is not None:
-            await channel.send("Welcome! Are you a TNPer or visitor? Have you ever thought about joining the NPA?  Let me know by saying NPA.")
-            await channel.send("If you have already applied please link your application")
+            await channel.send("Welcome! Are you a Wellie or visitor? Have you ever thought about joining the TBO?  Let me know by saying TBO.")
 
 
-    @commands.has_role('NPA Officer')
+    @commands.has_role('Petal Council (Officer)')
     @commands.command(pass_context=True,aliases=['SDP'])
     async def StartDailyPile(self,ctx):
         await ctx.send("This can take a few momements")
@@ -73,7 +72,7 @@ class HereCog(commands.Cog):
                     await ctx.send("Hello and welcome to a daily pile these are easy ops all you have to do is slide your WA nation in and endorce the point")
                     await ctx.send(f"**Target**: {tar[0]} **Last Minor update time:** {tar[3]} **Last Major update time:** {tar[5]} **Linky for the lazy:** {tar[7]}. Once you are in please say DP_in, this lets me track who is particiapting each time")
                     await ctx.send("Don't forgot to ping Daily Pile  role to get folks attention.  If you would like the Daily Pile role just say join_DP and I'll add it shortly")
-                    channel = ctx.guild.get_channel(830554742169272362) # Replace channel_id with the actual ID of the channel you want to send the message to
+                    channel = ctx.guild.get_channel(1149762619767521311) # Replace channel_id with the actual ID of the channel you want to send the message to
                     await channel.send(f"**__Daily Pile__** \n lead by {ctx.author.mention} \n {tar[7]}")
                     data = []
         else:
@@ -81,22 +80,14 @@ class HereCog(commands.Cog):
 
     @commands.command(pass_context=True,aliases=['dp_in'])
     async def DP_in(self,ctx):
-        channel = ctx.guild.get_channel(830554742169272362) # Replace channel_id with the actual ID of the channel you want to send the message to
+        channel = ctx.guild.get_channel(1149762619767521311) # Replace channel_id with the actual ID of the channel you want to send the message to
         await channel.send(f"{ctx.author.mention} Daily Pile")
 
-
-    @commands.command()
-    async def mission(self,ctx):
-        await ctx.send("https://docs.google.com/spreadsheets/d/12l7zoYXrV7L_5uXM5HeVoe93ZBU70ypYf3jS1I0TZuE/edit#gid=577970735")
-
-
-
-    @commands.has_role('High Command')
-    @commands.command(aliases=['Broadcast'])
+    @commands.has_role('Order Leadership')
     async def broadcast1(self,ctx,*,args):
         output = args
         output = output + "\n This is an automated messsage sent by "+ctx.author.mention+" please respond to them!"
-        role=discord.utils.get(ctx.guild.roles, name="NPA Soldier")
+        role=discord.utils.get(ctx.guild.roles, name="Neophytes (Soldier)")
         for m in ctx.guild.members:
             if role in m.roles:
                 try:
@@ -106,17 +97,10 @@ class HereCog(commands.Cog):
                     await ctx.send(m)
         await ctx.send("Done you should have gotten it by now")
 
-
-    @commands.command(pass_context=True,aliases=['NPA'])
-    async def npa(self, ctx):
-        await ctx.send("""
-You can apply to join the North Pacific Army military force of the North Pacific, here: https://forum.thenorthpacific.org/topic/9145375
-""")
-
     @commands.command()
     async def test(self, ctx):
         """This is to see if the Cog is loaded correctly"""
-        await  ctx.send("I work")
+        await  ctx.send("I work in TW")
 
     @commands.command(pass_context=True,aliases=['join_dp','Join_DP'])
     async def join_DP(self,ctx):
@@ -127,7 +111,7 @@ You can apply to join the North Pacific Army military force of the North Pacific
         member = ctx.message.author # Member object that you want to add the role to
         await member.add_roles(var) # Adds the role to the member
 
-    @commands.has_role('NPA Officer')
+    @commands.has_role('Petal Council (Officer)')
     @commands.command()
     async def set_here_msg(self, ctx, *args):
         """To set a here message remember to use {NAME} to ping yourself when you join here up to help find the channel"""
@@ -143,16 +127,16 @@ You can apply to join the North Pacific Army military force of the North Pacific
 
 
         
-    @commands.has_role('NPA Soldier')
+    @commands.has_role('Neophytes (Soldier)')
     @commands.command(pass_context=True,aliases=['here'])
     async def join(self, ctx):
         """Adds the Mini Ops role"""
         member = ctx.author
-        var = discord.utils.get(ctx.guild.roles, name = "miniops")
+        var = discord.utils.get(ctx.guild.roles, name = "Cherry")
         # This is the code needed to give a user a role
         member = ctx.message.author # Member object that you want to add the role to
         await member.add_roles(var) # Adds the role to the member
-        given_name="spiderweb"
+        given_name="military conclave"
         channel = discord.utils.get(ctx.guild.channels, name=given_name)
         channel_id = channel.id
         channel_out = ctx.guild.get_channel(channel_id)
@@ -163,7 +147,7 @@ You can apply to join the North Pacific Army military force of the North Pacific
         else:
              await channel_out.send("Now presenting the most honorable " +ctx.author.mention)
 
-    @commands.has_role('NPA Officer')
+    @commands.has_role('Petal Council (Officer)')
     @commands.command(pass_context=True,aliases=['update_end'])
     async def end_update(self, ctx):
         """Ends a regular update with report"""
@@ -171,9 +155,9 @@ You can apply to join the North Pacific Army military force of the North Pacific
         #This also does stuff like remove roles and lists who had them
         target=[]
         tarcount=0
-        list=discord.utils.get(ctx.guild.roles, name='miniops')
+        list=discord.utils.get(ctx.guild.roles, name='Cherry')
         #CHANGE TO REPORTS CHANNEL ******************************************************
-        given_name="npa-reports"
+        given_name="lorekeepers records"
         channel = discord.utils.get(ctx.guild.channels, name=given_name)
         channel_id = channel.id
         channel_out = ctx.guild.get_channel(channel_id)
@@ -192,76 +176,18 @@ You can apply to join the North Pacific Army military force of the North Pacific
         await channel_out.send(outbutt)
         await ctx.send("The end of the end")
 
-    @commands.has_role('NPA Officer')
-    @commands.command(pass_context=True)
-    async def end_joint_update(self, ctx):
-        """Ends a regular update with report"""
-        await ctx.send("The start of the end")
-        #This also does stuff like remove roles and lists who had them
-        target=[]
-        tarcount=0
-        list=discord.utils.get(ctx.guild.roles, name='Blazing Joints')
-        #CHANGE TO REPORTS CHANNEL ******************************************************
-        given_name="npa-reports"
-        channel = discord.utils.get(ctx.guild.channels, name=given_name)
-        channel_id = channel.id
-        channel_out = ctx.guild.get_channel(channel_id)
-        #CHANGE THE ABOVE TO REPORTS CHANNEL ********************************************
-        memberlist=[]
-        outbutt="The following members partook: \n"
-        for person in ctx.guild.members:
-            if list in person.roles:
-               await person.remove_roles(list)
-               memberlist.append(f"{person.mention}")
-        for grunt in memberlist:
-            outbutt= outbutt+grunt+"\n"
-        for each in HereCog.hits:
-            outbutt=outbutt+each+"\n"
-            HereCog.hits=[]
-        await channel_out.send(outbutt)
-        await ctx.send("The end of the end")
-
-    @commands.command(pass_context=True,aliases=["joint_join","join_joint"])
-    async def joint_here(self, ctx):
-        """Joins the Joint op channel"""
-        member = ctx.author
-        var = discord.utils.get(ctx.guild.roles, name = "Blazing Joints")
-        # This is the code needed to give a user a role
-        member = ctx.message.author # Member object that you want to add the role to
-        await member.add_roles(var) # Adds the role to the member
-#*************************************************************8
-        given_name="blazing-joints"
-        channel = discord.utils.get(ctx.guild.channels, name=given_name)
-        channel_id = channel.id
-        channel_out = ctx.guild.get_channel(channel_id)
-#**************************************************************
-        if "9003" in ctx.author.name:
-             await channel_out.send(intro +"Oh ya I almost forgot to ping him as well "+ ctx.author.mention)
-        else:
-             await channel_out.send("Now presenting the most honorable "+ ctx.author.mention)
-
-    @commands.has_role('Blazing Joints')
+    @commands.has_role('Cherry')
     @commands.command(pass_context=True)
     async def bye(self, ctx):
         """Leaves the op channel"""
         member = ctx.author
-        var = discord.utils.get(ctx.guild.roles, name = "blazing_joints")
-        member = ctx.message.author # Member object that you want to add the role to
-        await member.remove_roles(var)
-        await ctx.send("Bye!")
-
-    @commands.has_role('miniops')
-    @commands.command(pass_context=True)
-    async def bye(self, ctx):
-        """Leaves the op channel"""
-        member = ctx.author
-        var = discord.utils.get(ctx.guild.roles, name = "miniops")
+        var = discord.utils.get(ctx.guild.roles, name = "Cherry")
         member = ctx.message.author # Member object that you want to add the role to
         await member.remove_roles(var)
         await ctx.send("Bye!")
 
     @commands.command(pass_context=True)
-    @commands.has_role('NPA Officer')
+    @commands.has_role('Petal Council (Officer)')
     async def add(self,ctx,*args):
         """Adds a list of targets use " " to surround each target"""
         #adds targets to the list
@@ -270,7 +196,7 @@ You can apply to join the North Pacific Army military force of the North Pacific
         await ctx.send('{} targets added'.format(len(args)))
 
     @commands.command(pass_context=True)
-    @commands.has_role('NPA Officer')
+    @commands.has_role('Petal Council (Officer)')
     async def clear(self,ctx):
         """Run this before addding targets to clear everything"""
         HereCog.targets=[]
