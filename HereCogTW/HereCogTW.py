@@ -170,9 +170,9 @@ class HereCogTW(commands.Cog):
                memberlist.append(f"{person.mention}")
         for grunt in memberlist:
             outbutt= outbutt+grunt+"\n"
-        for each in HereCog.hits:
+        for each in HereCogTW.hits:
             outbutt=outbutt+each+"\n"
-            HereCog.hits=[]
+            HereCogTW.hits=[]
         await channel_out.send(outbutt)
         await ctx.send("The end of the end")
 
@@ -192,34 +192,34 @@ class HereCogTW(commands.Cog):
         """Adds a list of targets use " " to surround each target"""
         #adds targets to the list
         for every in args:
-             HereCog.targets.append(every)
+             HereCogTW.targets.append(every)
         await ctx.send('{} targets added'.format(len(args)))
 
     @commands.command(pass_context=True)
     @commands.has_role('Petal Council (Officer)')
     async def clear_list(self,ctx):
         """Run this before addding targets to clear everything"""
-        HereCog.targets=[]
-        HereCog.hits=[]
-        HereCog.lasttarg=""
+        HereCogTW.targets=[]
+        HereCogTW.hits=[]
+        HereCogTW.lasttarg=""
         await ctx.send("Cleared the current list")
 
     @commands.command(pass_context=True,aliases=['H','Hit','h','hit','M','m','Miss','miss','t','T'])
     async def next(self,ctx):
         """Next target asumming a miss.  Use Hit/Miss for auto reports"""
-        #await ctx.send(HereCog.targets)
+        #await ctx.send(HereCogTW.targets)
         if ctx.invoked_with == 'H' or ctx.invoked_with == 'Hit' or ctx.invoked_with == 'h' or ctx.invoked_with == 'hit':
-            HereCog.hits.append(HereCog.lasttarg)
-        if HereCog.targets:
+            HereCogTW.hits.append(HereCogTW.lasttarg)
+        if HereCogTW.targets:
             try:
-                if len(str(HereCog.targets[0])) < 1:
+                if len(str(HereCogTW.targets[0])) < 1:
                     raise Exception(" ")
-                await ctx.send("Next target is: "+ str(HereCog.targets[0]))
-                HereCog.lasttarg=str(HereCog.targets[0])
-                del HereCog.targets[0]
+                await ctx.send("Next target is: "+ str(HereCogTW.targets[0]))
+                HereCogTW.lasttarg=str(HereCogTW.targets[0])
+                del HereCogTW.targets[0]
             except Exception:
                 await ctx.send("Thanks for coming out, this op is now over! Pleae do end_update or end_joint_update")
-                HereCog.lasttarg=""
+                HereCogTW.lasttarg=""
         else:
             await ctx.send("No targets left please add more with add or type end_update/end_joint_update to close out.")
             return
