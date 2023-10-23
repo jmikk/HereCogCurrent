@@ -85,6 +85,7 @@ class HereCogTW(commands.Cog):
 
     @commands.has_role('Order Leadership')
     async def broadcast1(self,ctx,*,args):
+        await ctx.send("Sending now")
         output = args
         output = output + "\n This is an automated messsage sent by "+ctx.author.mention+" please respond to them!"
         role=discord.utils.get(ctx.guild.roles, name="Neophytes (Soldier)")
