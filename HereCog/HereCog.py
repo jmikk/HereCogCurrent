@@ -15,7 +15,7 @@ import datetime
 
 #password=""
 #RegionalNation=""
-
+intros={"9003":"test {NAME}"}
 intro="""Now entering the TNP citizen, Deputy Minister of Defense,
 Maker of so many card tools and several R/D ones too, NS Trading cards & Potato Alliance moderator,
 Former Epic Rarity, 4th most valuable deck, (7x) Card Olympics Host, Member of Petz, Commended by the SC,
@@ -141,8 +141,10 @@ You can apply to join the North Pacific Army military force of the North Pacific
         channel = discord.utils.get(ctx.guild.channels, name=given_name)
         channel_id = channel.id
         channel_out = ctx.guild.get_channel(channel_id)
-        if "9003" in ctx.author.name:
-             await channel_out.send(intro +"Oh ya I almost forgot to ping him as well "+ ctx.author.mention)
+        if ctx.author.name in intros:
+             welcome=intros[str(ctx.author.name)]
+             welcome = welcome.replace("{NAME}",ctx.author.mention)
+             await channel_out.send(welcome)
         else:
              await channel_out.send("Now presenting the most honorable " +ctx.author.mention)
 
