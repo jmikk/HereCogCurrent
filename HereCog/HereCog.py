@@ -127,7 +127,20 @@ You can apply to join the North Pacific Army military force of the North Pacific
         member = ctx.message.author # Member object that you want to add the role to
         await member.add_roles(var) # Adds the role to the member
 
+    @commands.has_role('NPA Officer')
+    @commands.command(pass_context=True,aliases=['here'])
+    async def set_here_msg(self, ctx, *args):
+        """To set a here message remember to use {NAME} to ping yourself when you join here up to help find the channel"""
+        msg=args.join()
+        if "{NAME}" not in msg:
+            msg=msg+"\n{NAME}"
+            await ctx.send(f"Added {ctx.author.mention} at the end")
+        intros[ctx.author.name]=msg
+        await ctx.send(f"Welcome message set to {intros[ctx.author.name]}")
+            
 
+
+        
     @commands.has_role('NPA Soldier')
     @commands.command(pass_context=True,aliases=['here'])
     async def join(self, ctx):
