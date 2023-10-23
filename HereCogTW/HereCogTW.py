@@ -136,7 +136,7 @@ class HereCogTW(commands.Cog):
         # This is the code needed to give a user a role
         member = ctx.message.author # Member object that you want to add the role to
         await member.add_roles(var) # Adds the role to the member
-        given_name="military conclave"
+        given_name="military-conclave"
         channel = discord.utils.get(ctx.guild.channels, name=given_name)
         channel_id = channel.id
         channel_out = ctx.guild.get_channel(channel_id)
