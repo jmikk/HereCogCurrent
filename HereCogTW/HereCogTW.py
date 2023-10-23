@@ -197,7 +197,7 @@ class HereCogTW(commands.Cog):
 
     @commands.command(pass_context=True)
     @commands.has_role('Petal Council (Officer)')
-    async def clear(self,ctx):
+    async def clear_list(self,ctx):
         """Run this before addding targets to clear everything"""
         HereCog.targets=[]
         HereCog.hits=[]
