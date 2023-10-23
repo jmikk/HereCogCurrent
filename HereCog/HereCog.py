@@ -128,7 +128,6 @@ You can apply to join the North Pacific Army military force of the North Pacific
         await member.add_roles(var) # Adds the role to the member
 
     @commands.has_role('NPA Officer')
-    @commands.command(pass_context=True,aliases=['here'])
     async def set_here_msg(self, ctx, *args):
         """To set a here message remember to use {NAME} to ping yourself when you join here up to help find the channel"""
         msg=args.join()
