@@ -137,7 +137,7 @@ You can apply to join the North Pacific Army military force of the North Pacific
             msg=msg+"\n{NAME}"
             await ctx.send(f"Added {ctx.author.mention} at the end")
         intros[ctx.author.name]=msg
-        msg.replace("{NAME}",ctx.author.mention)
+        msg = msg.replace("{NAME}",ctx.author.mention)
         await ctx.send(f"Welcome message set to {msg}")
             
 
