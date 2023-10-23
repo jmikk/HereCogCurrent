@@ -131,6 +131,7 @@ You can apply to join the North Pacific Army military force of the North Pacific
     async def set_here_msg(self, ctx, *args):
         """To set a here message remember to use {NAME} to ping yourself when you join here up to help find the channel"""
         msg=args.join()
+        await ctx.send(msg)
         if "{NAME}" not in msg:
             msg=msg+"\n{NAME}"
             await ctx.send(f"Added {ctx.author.mention} at the end")
