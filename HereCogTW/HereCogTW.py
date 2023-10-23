@@ -157,7 +157,7 @@ class HereCogTW(commands.Cog):
         tarcount=0
         list=discord.utils.get(ctx.guild.roles, name='Cherry')
         #CHANGE TO REPORTS CHANNEL ******************************************************
-        given_name="lorekeepers records"
+        given_name="lorekeepers-records"
         channel = discord.utils.get(ctx.guild.channels, name=given_name)
         channel_id = channel.id
         channel_out = ctx.guild.get_channel(channel_id)
