@@ -43,11 +43,11 @@ class HereCogTW(commands.Cog):
         self.password=""
         self.RegionalNation=""
     
-    @commands.Cog.listener()
-    async def on_member_join(self,member):
-        channel = member.guild.system_channel
-        if channel is not None:
-            await channel.send("Welcome! Are you a Wellie or visitor? Have you ever thought about joining the TBO?  Let me know by saying TBO.")
+    #@commands.Cog.listener()
+    #async def on_member_join(self,member):
+    #    channel = member.guild.system_channel
+    #    if channel is not None:
+    #        await channel.send("Welcome! Are you a Wellie or visitor? Have you ever thought about joining the TBO?  Let me know by saying TBO.")
 
 
     @commands.has_role('Petal Council (Officer)')
