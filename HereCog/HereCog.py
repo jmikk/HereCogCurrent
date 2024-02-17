@@ -238,10 +238,12 @@ You can apply to join the North Pacific Army military force of the North Pacific
         channel_id = channel.id
         channel_out = ctx.guild.get_channel(channel_id)
 #**************************************************************
-        if "9003" in ctx.author.name:
-             await channel_out.send(intro +"Oh ya I almost forgot to ping him as well "+ ctx.author.mention)
+        if ctx.author.name in intros:
+             welcome=intros[str(ctx.author.name)]
+             welcome = welcome.replace("{NAME}",ctx.author.mention)
+             await channel_out.send(welcome)
         else:
-             await channel_out.send("Now presenting the most honorable "+ ctx.author.mention)
+             await channel_out.send("Now presenting the most honorable " +ctx.author.mention)
 
     @commands.has_role('Blazing Joints')
     @commands.command(pass_context=True)
